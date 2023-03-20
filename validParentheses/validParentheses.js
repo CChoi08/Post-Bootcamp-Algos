@@ -24,15 +24,17 @@ var isValid = function(x) {
         '{' : '}'
     };
 
-    for (let char of s) {
+    for (let char of x) {
         if (char in pairs) {
             stack.push(char);
         } else {
             if (stack.length === 0) {
+                console.log(false);
                 return false;
             }
             const last = stack.pop();
             if(pairs[last] !== char) {
+                console.log(false);
                 return false;
             }
             /*
@@ -47,9 +49,16 @@ var isValid = function(x) {
         }
     }
     if (stack.length) {
+        console.log(false);
         return false;
     } else {
+        console.log(true);
         return  true;
     }
 }
 
+let test1 = '{[]}';
+let test2 = '{{]';
+
+isValid(test1);
+isValid(test2);
